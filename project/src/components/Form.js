@@ -1,26 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 function Form(props) {
-    const { dispatch, state } = props
-    const [query, setQuery] = useState('')
-
-    const handleChange = e => {
-        setQuery(e.target.value)
-    }
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        dispatch({
-            type: 'ADD',
-            payload: query
-        })
-        setQuery('')
-    }
+    const { submit, change, state } = props
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
-                <input onChange={handleChange} value={query} placeholder="enter new todo" type="text" />
+            <form onSubmit={submit}>
+                <input onChange={change} value={state} placeholder="enter new todo" type="text" />
                 <button>Add</button>
             </form>
         </>
