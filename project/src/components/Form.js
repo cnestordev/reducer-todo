@@ -7,10 +7,9 @@ function Form(props) {
         <>
             <form onSubmit={submit}>
                 <input onChange={change} value={state} placeholder="enter new todo" type="text" />
-                <button>Add</button>
             </form>
-            <form onSubmit={clear}>
-                <button>Clear Completed</button>
+            <form className="clearForm" onSubmit={clear}>
+                <button>Clear completed</button>
             </form>
         </>
     )

@@ -36,10 +36,15 @@ function Todos(props) {
     }
 
     const TodoList = state.map(todo => <Todo toggler={handleToggler} key={todo.id} data={todo} />)
+
+    const uncompleted = state.filter(todo => !todo.completed)
+
     return (
-        <div>
-            {TodoList}
+        <div className="container">
+            <h1>Your Todo List</h1>
+            <p className="subheader">You have <span className="number">{uncompleted.length}</span> items left </p>
             <Form clear={handleClear} state={query} change={handleChange} submit={handleSubmit} />
+            {TodoList}
         </div>
     )
 }
