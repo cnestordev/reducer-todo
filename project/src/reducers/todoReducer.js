@@ -16,6 +16,22 @@ export function todoReducer(initialState, action) {
             }
             const newTodo = [...initialState, newItem]
             return newTodo
+        case 'TOGGLE':
+            const updatedList = initialState.map(item => {
+                if (item.id === action.payload.id) {
+                    return {
+                        ...item,
+                        completed: !item.completed
+                    }
+                }
+                return item
+
+            })
+            return updatedList
+        case 'CLEAR':
+            const clearedList = initialState.filter(item => !item.completed)
+            return clearedList
+
         default:
             return initialState
     }

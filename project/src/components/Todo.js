@@ -1,8 +1,20 @@
 import React from 'react'
 
-function Todo({ data }) {
+function Todo({ data, toggler }) {
+    let style;
+
+    if (data.completed) {
+        style = {
+            background: 'green'
+        }
+    } else {
+        style = {
+            background: 'red'
+        }
+    }
+
     return (
-        <div>
+        <div style={style} onClick={() => toggler(data)}>
             <h3>{data.item}</h3>
         </div>
     )

@@ -21,11 +21,25 @@ function Todos(props) {
         setQuery('')
     }
 
-    const TodoList = state.map(todo => <Todo key={todo.id} data={todo} />)
+    const handleToggler = obj => {
+        dispatch({
+            type: 'TOGGLE',
+            payload: obj
+        })
+    }
+
+    const handleClear = e => {
+        e.preventDefault()
+        dispatch({
+            type: 'CLEAR'
+        })
+    }
+
+    const TodoList = state.map(todo => <Todo toggler={handleToggler} key={todo.id} data={todo} />)
     return (
         <div>
             {TodoList}
-            <Form state={query} change={handleChange} submit={handleSubmit} />
+            <Form clear={handleClear} state={query} change={handleChange} submit={handleSubmit} />
         </div>
     )
 }
